@@ -1,0 +1,68 @@
+[
+  {
+    "id": "custom",
+    "name": "自定义输入",
+    "totalSkillCount": 0,
+    "mustHaveSkillCount": 0
+  },
+  {
+    "id": "longnv",
+    "name": "龙女",
+    "totalSkillCount": 4,
+    "mustHaveSkillCount": 1
+  },
+  {
+    "id": "fenghuang",
+    "name": "凤凰",
+    "totalSkillCount": 4,
+    "mustHaveSkillCount": 2
+  },
+  {
+    "id": "xixuegui",
+    "name": "吸血鬼",
+    "totalSkillCount": 5,
+    "mustHaveSkillCount": 1
+  },
+  {
+    "id": "leiyao",
+    "name": "泪妖",
+    "totalSkillCount": 4,
+    "mustHaveSkillCount": 1
+  },
+  {
+    "id": "shituo",
+    "name": "狮驼",
+    "totalSkillCount": 4,
+    "mustHaveSkillCount": 0
+  },
+  {
+    "id": "huahun",
+    "name": "画魂",
+    "totalSkillCount": 4,
+    "mustHaveSkillCount": 0
+  },
+  {
+    "id": "leiniaoren",
+    "name": "雷鸟人",
+    "totalSkillCount": 5,
+    "mustHaveSkillCount": 1
+  },
+  {
+    "id": "paopao",
+    "name": "泡泡",
+    "totalSkillCount": 2,
+    "mustHaveSkillCount": 1
+  },
+  {
+    "id": "dahaigui",
+    "name": "大海龟",
+    "totalSkillCount": 3,
+    "mustHaveSkillCount": 1
+  },
+  {
+    "id": "jiaolong",
+    "name": "蛟龙",
+    "totalSkillCount": 5,
+    "mustHaveSkillCount": 1
+  }
+]

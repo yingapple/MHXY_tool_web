@@ -1,0 +1,83 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 金色渐变 -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- 阴影效果 -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 发光效果 -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景圆形 -->
+  <circle cx="60" cy="60" r="55" fill="url(#goldGradient)" opacity="0.15"/>
+
+  <!-- 装饰性祥云图案 -->
+  <path d="M 20 30 Q 25 25, 35 30 Q 40 25, 45 30 Q 50 35, 40 40 Q 30 45, 25 35 Z"
+        fill="#FFA500" opacity="0.2" transform="translate(40, 5)"/>
+
+  <!-- "梦"字主体 - 简化艺术化版本 -->
+  <g filter="url(#shadow)" filter="url(#glow)">
+    <!-- 草字头 -->
+    <path d="M 35 25 Q 40 20, 45 25 L 43 30"
+          stroke="url(#goldGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 60 25 Q 65 20, 70 25 L 68 30"
+          stroke="url(#goldGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 30 28 L 80 28"
+          stroke="url(#goldGradient)" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- 中间"林"字部分 - 简化 -->
+    <rect x="40" y="35" width="3" height="25" fill="url(#goldGradient)" rx="1.5"/>
+    <rect x="52" y="35" width="3" height="25" fill="url(#goldGradient)" rx="1.5"/>
+    <rect x="65" y="35" width="3" height="25" fill="url(#goldGradient)" rx="1.5"/>
+
+    <!-- 横线 -->
+    <path d="M 38 45 L 70 45"
+          stroke="url(#goldGradient)" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- 下部"夕"字部分 -->
+    <path d="M 35 65 L 75 65 L 70 90 L 40 90 Z"
+          fill="url(#goldGradient)" opacity="0.9"/>
+    <path d="M 40 70 L 70 70"
+          stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 42 80 L 68 80"
+          stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- 装饰性笔画 -->
+    <circle cx="55" cy="55" r="2" fill="#FFD700"/>
+  </g>
+
+  <!-- 装饰性光晕 -->
+  <circle cx="60" cy="60" r="50" fill="none" stroke="url(#goldGradient)"
+          stroke-width="2" opacity="0.3" stroke-dasharray="5,5">
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 60 60"
+      to="360 60 60"
+      dur="20s"
+      repeatCount="indefinite"/>
+  </circle>
+</svg>
