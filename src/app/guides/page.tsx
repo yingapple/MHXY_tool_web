@@ -15,22 +15,34 @@ const guides = [
     category: '概率计算',
     readTime: '8分钟',
     keywords: ['炼妖概率', '二项分布', '技能保留', '数学公式'],
+    icon: '🎯',
   },
   {
-    id: 'lianyao-jiqiao',
-    title: '2025最新炼妖技巧：如何炼出多技能宝宝',
-    description: '分享实战炼妖技巧，包括胚子选择、技能搭配、成本控制等经验总结',
-    category: '实战技巧',
+    id: 'dashu-jiqiao',
+    title: '梦幻西游打书技巧详解 - 前排书后排书完全攻略',
+    description: '详细解析打书顺序、技能冲突、前排书后排书概念，教你避开打书陷阱，提升成功率',
+    category: '打书攻略',
+    readTime: '12分钟',
+    keywords: ['打书技巧', '前排书', '后排书', '技能冲突'],
+    icon: '📖',
+  },
+  {
+    id: 'wuxing-xuanze',
+    title: '宠物五行相生相克详解 - 炼妖五行选择攻略',
+    description: '深入解析五行系统对炼妖的影响，五行相生出极品？五行相克出海龟？真相在这里',
+    category: '五行系统',
     readTime: '10分钟',
-    keywords: ['炼妖技巧', '多技能', '胚子选择', '成本控制'],
+    keywords: ['五行相生', '五行相克', '炼妖五行', '五行搭配'],
+    icon: '🔮',
   },
   {
-    id: 'teshu-jineng',
-    title: '特殊技能保留概率深度分析',
-    description: '详细讲解高级必杀、高级神佑复生等特殊技能的保留机制和概率计算方法',
-    category: '进阶知识',
-    readTime: '6分钟',
-    keywords: ['特殊技能', '高级必杀', '高级神佑', '概率分析'],
+    id: 'paizi-xuanze',
+    title: '宠物胚子选择攻略 - 资质成长怎么看？',
+    description: '教你鉴别胚子好坏，避开奸商陷阱，选出性价比最高的炼妖胚子，成长>资质>技能数',
+    category: '胚子选择',
+    readTime: '15分钟',
+    keywords: ['胚子选择', '资质成长', '宠物资质', '炼妖胚子'],
+    icon: '🔍',
   },
 ];
 
@@ -80,9 +92,12 @@ export default function GuidesPage() {
                 <span className="text-sm text-amber-600">{guide.readTime}</span>
               </div>
 
-              <h3 className="text-xl font-semibold text-amber-900 mb-2 group-hover:text-amber-700 transition-colors">
-                {guide.title}
-              </h3>
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-3xl">{guide.icon}</span>
+                <h3 className="text-xl font-semibold text-amber-900 group-hover:text-amber-700 transition-colors">
+                  {guide.title}
+                </h3>
+              </div>
 
               <p className="text-amber-700 mb-4 text-sm">
                 {guide.description}

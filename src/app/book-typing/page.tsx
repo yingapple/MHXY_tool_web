@@ -48,14 +48,17 @@ export default function BookTypingPage() {
                 梦幻西游炼妖助手
               </h1>
             </a>
-            <nav className="flex gap-3 md:gap-4">
-              <a href="/calculator" className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-yellow-300">
+            <nav className="flex gap-2 md:gap-3">
+              <a href="/calculator" className="px-3 md:px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-yellow-300 text-sm md:text-base">
                 炼妖计算器
               </a>
-              <a href="/book-typing" className="px-4 py-2 bg-purple-600 text-white font-bold rounded-lg shadow-lg border-2 border-purple-300">
+              <a href="/blessing" className="px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-blue-300 text-sm md:text-base">
+                赐福计算器
+              </a>
+              <a href="/book-typing" className="px-3 md:px-4 py-2 bg-purple-600 text-white font-bold rounded-lg shadow-lg border-2 border-purple-300 text-sm md:text-base">
                 打书计算器
               </a>
-              <a href="/guides" className="px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-red-400">
+              <a href="/guides" className="px-3 md:px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-red-400 text-sm md:text-base">
                 攻略库
               </a>
             </nav>
