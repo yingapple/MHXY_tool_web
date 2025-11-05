@@ -1460,18 +1460,22 @@ main()
    ```
 
 **检查清单**:
-- [x] 设置 307/301 重定向: `mhxy-helper.com` → `www.mhxy-helper.com`
-- [ ] 所有页面添加 canonical 标签指向 `www` 版本
-- [ ] 更新 sitemap.xml 使用 `www` URL
-- [ ] 更新所有 Open Graph 和 meta 标签使用 `www` URL
-- [ ] Google Search Console 提交 `www` 版本
-- [ ] 百度站长平台提交 `www` 版本
-- [ ] 检查内部链接都使用 `www` 或相对路径
+- [x] 设置 301 永久重定向: `mhxy-helper.com` → `www.mhxy-helper.com` (使用 vercel.json)
+- [x] 所有页面添加 canonical 标签指向 `www` 版本 (通过 metadataBase 自动生成)
+- [x] 更新 sitemap.xml 使用 `www` URL
+- [x] 更新所有 Open Graph 和 meta 标签使用 `www` URL
+- [ ] Google Search Console 提交 `www` 版本 (需要手动操作)
+- [ ] 百度站长平台提交 `www` 版本 (需要手动操作)
+- [x] 检查内部链接都使用相对路径 (已使用相对路径)
 
 **注意事项**:
-- ⚠️ 建议将 307 改为 **301 永久重定向**，这样搜索引擎会更快地识别主域名
+- ✅ 已配置 **301 永久重定向** (通过 vercel.json)
 - ⚠️ 一旦选择了 `www` 作为主域名，就不要再改变，保持一致性
 - ⚠️ 所有外部推广、社交媒体分享都使用 `https://www.mhxy-helper.com`
+
+**相关文档**:
+- 详细的重定向配置和验证指南: [VERCEL-REDIRECT-UPDATE.md](VERCEL-REDIRECT-UPDATE.md)
+- 包含 Google Search Console 和百度站长平台提交步骤
 
 ---
 
