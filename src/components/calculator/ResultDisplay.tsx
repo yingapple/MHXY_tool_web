@@ -62,6 +62,13 @@ export default function ResultDisplay({ result, isCalculating, profitInput }: Re
       })()
     : result.skillProbabilities;
 
+  // 安全地获取最高概率的技能数（防止空数组错误）
+  const mostLikelySkillResult = processedSkillProbabilities.length > 0
+    ? processedSkillProbabilities.reduce((max, item) =>
+        item.probability > max.probability ? item : max
+      )
+    : { skillCount: 0, probability: 0, percentage: '0%' };
+
   return (
     <div
       className={`transition-all duration-700 ${
@@ -291,14 +298,10 @@ export default function ResultDisplay({ result, isCalculating, profitInput }: Re
             <span className="text-2xl">🌟</span>
             <div>
               <div className="font-semibold text-amber-900">
-                最有可能的结果: {processedSkillProbabilities.reduce((max, item) =>
-                  item.probability > max.probability ? item : max
-                ).skillCount} 技能
+                最有可能的结果: {mostLikelySkillResult.skillCount} 技能
               </div>
               <div className="text-sm text-amber-700">
-                概率: {processedSkillProbabilities.reduce((max, item) =>
-                  item.probability > max.probability ? item : max
-                ).percentage}
+                概率: {mostLikelySkillResult.percentage}
               </div>
             </div>
           </div>
@@ -402,9 +405,7 @@ export default function ResultDisplay({ result, isCalculating, profitInput }: Re
             <span className="text-amber-600 mt-0.5">•</span>
             <span>
               根据概率分布，你最有可能炼出 <span className="font-semibold text-amber-900">
-                {processedSkillProbabilities.reduce((max, item) =>
-                  item.probability > max.probability ? item : max
-                ).skillCount} 技能
+                {mostLikelySkillResult.skillCount} 技能
               </span> 的宝宝
             </span>
           </li>

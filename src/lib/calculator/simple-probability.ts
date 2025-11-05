@@ -163,6 +163,17 @@ export function calculateSimpleRefinement(input: SimpleCalculationInput): Simple
     }))
     .sort((a, b) => a.skillCount - b.skillCount);
 
+  // 安全检查：确保至少有一个概率条目（防止空数组错误）
+  if (skillProbabilities.length === 0) {
+    // 如果技能池为空，至少返回必带技能的概率
+    const minSkillCount = Math.max(petA.mustHaveSkillCount, petB.mustHaveSkillCount);
+    skillProbabilities.push({
+      skillCount: minSkillCount,
+      probability: resultTypes.mainPet + resultTypes.subPet, // 主宠或副宠的总概率
+      percentage: ((resultTypes.mainPet + resultTypes.subPet) * 100).toFixed(2) + '%',
+    });
+  }
+
   // 6. 计算特殊技能保留概率分布
   const specialSkillProbabilities: SpecialSkillProbability[] = [];
   let expectedSpecialSkillCount = 0;
