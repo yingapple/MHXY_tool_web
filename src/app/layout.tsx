@@ -75,9 +75,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // TODO: 部署后添加
-    // google: 'your-google-verification-code',
-    // baidu: 'your-baidu-verification-code',
+    google: '49M9s9qb0nO1UfV9Hg5J20XUa8eevCCuH661tm0kso0',
+    other: {
+      'baidu-site-verification': 'codeva-Bo8dqT4NWQ',
+    },
   },
 };
 
