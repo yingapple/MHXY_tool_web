@@ -22,21 +22,24 @@ export default function PetSelector({ label, value, onChange }: PetSelectorProps
           <label className="block text-base font-bold text-amber-900 mb-3 flex items-center gap-2">
             <span>📚</span>
             非必带技能数
-            <span className="text-amber-600 text-xs font-normal ml-2">(不含必带技能，特殊技能包含在内)</span>
+            <span className="text-amber-600 text-xs font-normal ml-2">(不包含必带技能)</span>
           </label>
           <input
             type="number"
             min="0"
             max="20"
-            value={value.totalSkillCount}
-            onChange={(e) =>
-              onChange({ ...value, totalSkillCount: parseInt(e.target.value) || 0 })
-            }
+            value={value.totalSkillCount === 0 ? '' : value.totalSkillCount}
+            onChange={(e) => {
+              const val = e.target.value === '' ? 0 : parseInt(e.target.value);
+              if (!isNaN(val)) {
+                onChange({ ...value, totalSkillCount: val });
+              }
+            }}
             className="w-full rounded-lg border-2 border-amber-300 px-5 py-3 text-lg font-semibold text-amber-900 bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-500 shadow-sm hover:border-amber-400 transition-all"
             placeholder="输入非必带技能数"
           />
           <p className="text-xs text-amber-700 mt-2 bg-amber-100 px-3 py-1 rounded">
-            💡 例如：4技能宝宝有1个必带技能被垫书了，这里填4。特殊技能包含在这4个里面。
+            💡 例如：5技能宝宝有1个必带技能，这里填4（非必带技能数）。
           </p>
         </div>
 
@@ -50,10 +53,13 @@ export default function PetSelector({ label, value, onChange }: PetSelectorProps
             type="number"
             min="0"
             max={value.totalSkillCount}
-            value={value.mustHaveSkillCount}
-            onChange={(e) =>
-              onChange({ ...value, mustHaveSkillCount: parseInt(e.target.value) || 0 })
-            }
+            value={value.mustHaveSkillCount === 0 ? '' : value.mustHaveSkillCount}
+            onChange={(e) => {
+              const val = e.target.value === '' ? 0 : parseInt(e.target.value);
+              if (!isNaN(val)) {
+                onChange({ ...value, mustHaveSkillCount: val });
+              }
+            }}
             className="w-full rounded-lg border-2 border-amber-300 px-5 py-3 text-lg font-semibold text-amber-900 bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-500 shadow-sm hover:border-amber-400 transition-all"
             placeholder="输入必带技能数"
           />
@@ -64,20 +70,23 @@ export default function PetSelector({ label, value, onChange }: PetSelectorProps
           <label className="block text-base font-bold text-amber-900 mb-3 flex items-center gap-2">
             <span>✨</span>
             特殊技能数量
-            <span className="text-amber-600 text-xs font-normal ml-2">(如高级必杀、高级神佑等)</span>
+            <span className="text-amber-600 text-xs font-normal ml-2">(一般为0，可不填)</span>
           </label>
           <input
             type="number"
             min="0"
             max={value.totalSkillCount}
-            value={value.specialSkillCount}
-            onChange={(e) =>
-              onChange({ ...value, specialSkillCount: parseInt(e.target.value) || 0 })
-            }
+            value={value.specialSkillCount === 0 ? '' : value.specialSkillCount}
+            onChange={(e) => {
+              const val = e.target.value === '' ? 0 : parseInt(e.target.value);
+              if (!isNaN(val)) {
+                onChange({ ...value, specialSkillCount: val });
+              }
+            }}
             className="w-full rounded-lg border-2 border-purple-300 px-5 py-3 text-lg font-semibold text-purple-900 bg-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 shadow-sm hover:border-purple-400 transition-all"
-            placeholder="输入特殊技能数"
+            placeholder="默认为0"
           />
-          <p className="text-xs text-purple-700 mt-2 bg-purple-100 px-3 py-1 rounded">💡 用于单独计算保留特殊技能的概率</p>
+          <p className="text-xs text-purple-700 mt-2 bg-purple-100 px-3 py-1 rounded">💡 如果需要单独追踪某些技能，可以填写数量</p>
         </div>
       </div>
 

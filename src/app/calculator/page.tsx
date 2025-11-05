@@ -15,9 +15,9 @@ export default function CalculatorPage() {
   const resultRef = useRef<HTMLDivElement>(null);
 
   const [calculationInput, setCalculationInput] = useState<SimpleCalculationInput>({
-    petA: { totalSkillCount: 4, mustHaveSkillCount: 1, specialSkillCount: 1 },
-    petB: { totalSkillCount: 5, mustHaveSkillCount: 1, specialSkillCount: 2 },
-    duplicateSkillCount: 2,
+    petA: { totalSkillCount: 4, mustHaveSkillCount: 1, specialSkillCount: 0 },
+    petB: { totalSkillCount: 5, mustHaveSkillCount: 1, specialSkillCount: 0 },
+    duplicateSkillCount: 0,
     wildProb: 0.10,
     specialProb: 0.10,
   });
@@ -33,6 +33,15 @@ export default function CalculatorPage() {
 
   const [result, setResult] = useState<SimpleCalculationResult | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
+  const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
+  const [showProfitCalculation, setShowProfitCalculation] = useState(false);
+
+  // 辅助函数：安全解析数字输入
+  const parseNumberInput = (value: string, defaultValue: number = 0): number => {
+    if (value === '') return defaultValue;
+    const parsed = parseInt(value);
+    return isNaN(parsed) ? defaultValue : parsed;
+  };
 
   const handleCalculate = () => {
     setIsCalculating(true);
@@ -112,15 +121,32 @@ export default function CalculatorPage() {
           />
         </section>
 
-        {/* 概率设置 - 突出可编辑性 */}
-        <section className="mb-8 rounded-xl bg-gradient-to-br from-white to-blue-50 p-8 shadow-lg ring-2 ring-blue-300" aria-labelledby="probability-settings">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-3xl" aria-hidden="true">⚙️</span>
-            <div>
-              <h2 id="probability-settings" className="text-2xl font-bold text-blue-900">概率参数设置</h2>
-              <p className="text-sm text-blue-600 mt-1">所有概率都可以修改，根据实际情况调整</p>
+        {/* 概率设置 - 可折叠 */}
+        <section className="mb-8 rounded-xl bg-gradient-to-br from-white to-blue-50 shadow-lg ring-2 ring-blue-300 overflow-hidden" aria-labelledby="probability-settings">
+          <button
+            onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
+            className="w-full flex items-center justify-between p-6 hover:bg-blue-50 transition-colors"
+            aria-expanded={showAdvancedSettings}
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-2xl" aria-hidden="true">⚙️</span>
+              <div className="text-left">
+                <h2 id="probability-settings" className="text-xl font-bold text-blue-900">高级参数设置</h2>
+                <p className="text-xs text-blue-600 mt-1">一般无需修改，点击展开调整</p>
+              </div>
             </div>
-          </div>
+            <svg
+              className={`w-6 h-6 text-blue-600 transition-transform ${showAdvancedSettings ? 'rotate-180' : ''}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          {showAdvancedSettings && (
+            <div className="px-8 pb-8 pt-2">
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* 技能保留概率 - 现在可编辑 */}
@@ -153,11 +179,11 @@ export default function CalculatorPage() {
                 type="number"
                 min="0"
                 max={Math.min(calculationInput.petA.totalSkillCount, calculationInput.petB.totalSkillCount)}
-                value={calculationInput.duplicateSkillCount}
+                value={calculationInput.duplicateSkillCount === 0 ? '' : calculationInput.duplicateSkillCount}
                 onChange={(e) =>
                   setCalculationInput({
                     ...calculationInput,
-                    duplicateSkillCount: parseInt(e.target.value) || 0,
+                    duplicateSkillCount: parseNumberInput(e.target.value, 0),
                   })
                 }
                 className="w-full rounded-lg border-2 border-purple-300 px-5 py-3 text-xl font-bold text-purple-900 bg-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 shadow-sm hover:border-purple-400 transition-all"
@@ -192,11 +218,11 @@ export default function CalculatorPage() {
               </div>
             </div>
 
-            {/* 特殊宠概率 */}
-            <div className="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-5 border-2 border-pink-300 shadow-md">
-              <label className="block text-base font-bold text-pink-900 mb-3 flex items-center gap-2">
+            {/* 大海龟概率 */}
+            <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-5 border-2 border-red-300 shadow-md">
+              <label className="block text-base font-bold text-red-900 mb-3 flex items-center gap-2">
                 <span>🐢</span>
-                特殊宠物概率 (%)
+                大海龟概率 (%) ⚠️
               </label>
               <input
                 type="number"
@@ -210,11 +236,11 @@ export default function CalculatorPage() {
                     specialProb: (parseInt(e.target.value) || 0) / 100,
                   })
                 }
-                className="w-full rounded-lg border-2 border-pink-300 px-5 py-3 text-xl font-bold text-pink-900 bg-white focus:border-pink-500 focus:ring-2 focus:ring-pink-500 shadow-sm hover:border-pink-400 transition-all"
-                placeholder="输入特殊宠概率"
+                className="w-full rounded-lg border-2 border-red-300 px-5 py-3 text-xl font-bold text-red-900 bg-white focus:border-red-500 focus:ring-2 focus:ring-red-500 shadow-sm hover:border-red-400 transition-all"
+                placeholder="输入大海龟概率"
               />
-              <div className="mt-3 p-3 bg-yellow-100 rounded-lg border border-yellow-300">
-                <p className="text-xs text-yellow-800 font-semibold">⚠️ 推测值：大海龟/泡泡出现概率（可修改）</p>
+              <div className="mt-3 p-3 bg-red-100 rounded-lg border border-red-400">
+                <p className="text-xs text-red-800 font-semibold">⚠️ 推测值：大海龟是最差结果（可修改）</p>
               </div>
             </div>
           </div>
@@ -232,8 +258,8 @@ export default function CalculatorPage() {
                 <div className="text-xs text-green-700 mt-1">野生宠物</div>
               </div>
               <div className="bg-white/80 rounded-lg p-3 text-center border border-blue-200">
-                <div className="text-xl font-bold text-pink-600">{(calculationInput.specialProb * 100).toFixed(0)}%</div>
-                <div className="text-xs text-pink-700 mt-1">特殊宠物</div>
+                <div className="text-xl font-bold text-red-600">{(calculationInput.specialProb * 100).toFixed(0)}%</div>
+                <div className="text-xs text-red-700 mt-1">大海龟 ⚠️</div>
               </div>
               <div className="bg-white/80 rounded-lg p-3 text-center border border-blue-200">
                 <div className="text-xl font-bold text-blue-600">{((1 - calculationInput.wildProb - calculationInput.specialProb) * 50).toFixed(0)}%</div>
@@ -242,21 +268,40 @@ export default function CalculatorPage() {
             </div>
             <div className="mt-4 p-3 bg-yellow-50 rounded-lg border-2 border-yellow-300">
               <p className="text-xs text-yellow-800 font-semibold">
-                ⚠️ 野生宠物和特殊宠物是独立的结果类型，不继承任何技能（相当于比0技能还差）
+                ⚠️ 野生宠物和大海龟是独立的结果类型，不继承任何技能（相当于比0技能还差）
               </p>
             </div>
           </div>
+            </div>
+          )}
         </section>
 
-        {/* 收益计算输入 */}
-        <section className="mb-8 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-100 p-8 shadow-2xl ring-2 ring-green-400" aria-labelledby="profit-calculation">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-4xl" aria-hidden="true">💰</span>
-            <div>
-              <h2 id="profit-calculation" className="text-2xl font-black text-green-900">收益计算（选填）</h2>
-              <p className="text-sm text-green-700 mt-1">填写后可以看到"打成就赚XXX万"的激励信息！</p>
+        {/* 收益计算输入 - 可折叠 */}
+        <section className="mb-8 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-100 shadow-2xl ring-2 ring-green-400 overflow-hidden" aria-labelledby="profit-calculation">
+          <button
+            onClick={() => setShowProfitCalculation(!showProfitCalculation)}
+            className="w-full flex items-center justify-between p-6 hover:bg-green-100 transition-colors"
+            aria-expanded={showProfitCalculation}
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-3xl" aria-hidden="true">💰</span>
+              <div className="text-left">
+                <h2 id="profit-calculation" className="text-xl font-black text-green-900">收益计算（选填）</h2>
+                <p className="text-xs text-green-700 mt-1">填写后可以看到"打成就赚XXX万"的激励信息！</p>
+              </div>
             </div>
-          </div>
+            <svg
+              className={`w-6 h-6 text-green-600 transition-transform ${showProfitCalculation ? 'rotate-180' : ''}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          {showProfitCalculation && (
+            <div className="px-8 pb-8 pt-2">
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* 主宠成本 */}
@@ -269,8 +314,8 @@ export default function CalculatorPage() {
                 type="number"
                 min="0"
                 step="10"
-                value={profitInput.petACost}
-                onChange={(e) => setProfitInput({ ...profitInput, petACost: parseInt(e.target.value) || 0 })}
+                value={profitInput.petACost === 0 ? '' : profitInput.petACost}
+                onChange={(e) => setProfitInput({ ...profitInput, petACost: parseNumberInput(e.target.value, 0) })}
                 className="w-full rounded-lg border-2 border-green-300 px-5 py-3 text-xl font-bold text-green-900 bg-white focus:border-green-500 focus:ring-2 focus:ring-green-500 shadow-sm"
               />
             </div>
@@ -285,8 +330,8 @@ export default function CalculatorPage() {
                 type="number"
                 min="0"
                 step="10"
-                value={profitInput.petBCost}
-                onChange={(e) => setProfitInput({ ...profitInput, petBCost: parseInt(e.target.value) || 0 })}
+                value={profitInput.petBCost === 0 ? '' : profitInput.petBCost}
+                onChange={(e) => setProfitInput({ ...profitInput, petBCost: parseNumberInput(e.target.value, 0) })}
                 className="w-full rounded-lg border-2 border-green-300 px-5 py-3 text-xl font-bold text-green-900 bg-white focus:border-green-500 focus:ring-2 focus:ring-green-500 shadow-sm"
               />
             </div>
@@ -302,7 +347,7 @@ export default function CalculatorPage() {
                 min="1"
                 max="20"
                 value={profitInput.targetSkills}
-                onChange={(e) => setProfitInput({ ...profitInput, targetSkills: parseInt(e.target.value) || 1 })}
+                onChange={(e) => setProfitInput({ ...profitInput, targetSkills: parseNumberInput(e.target.value, 1) })}
                 className="w-full rounded-lg border-2 border-amber-300 px-5 py-3 text-xl font-bold text-amber-900 bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-500 shadow-sm"
               />
               <p className="text-xs text-amber-700 mt-2">你想炼出几技能的宝宝？</p>
@@ -318,8 +363,8 @@ export default function CalculatorPage() {
                 type="number"
                 min="0"
                 step="50"
-                value={profitInput.targetMarketPrice}
-                onChange={(e) => setProfitInput({ ...profitInput, targetMarketPrice: parseInt(e.target.value) || 0 })}
+                value={profitInput.targetMarketPrice === 0 ? '' : profitInput.targetMarketPrice}
+                onChange={(e) => setProfitInput({ ...profitInput, targetMarketPrice: parseNumberInput(e.target.value, 0) })}
                 className="w-full rounded-lg border-2 border-yellow-400 px-5 py-3 text-2xl font-black text-amber-900 bg-white focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 shadow-sm"
               />
               <p className="text-sm text-amber-800 mt-2 font-bold">⭐ 炼出目标宝宝后能卖多少钱？</p>
@@ -333,6 +378,8 @@ export default function CalculatorPage() {
               如果炼出目标宝宝，利润 = {profitInput.targetMarketPrice - (profitInput.petACost + profitInput.petBCost + profitInput.refinementFee)} 万！
             </p>
           </div>
+            </div>
+          )}
         </section>
 
         {/* 计算按钮 */}
@@ -371,7 +418,12 @@ export default function CalculatorPage() {
               <ExportButton targetRef={resultRef} />
             </div>
             <div ref={resultRef}>
-              <ResultDisplay result={result} isCalculating={isCalculating} profitInput={profitInput} />
+              <ResultDisplay
+                result={result}
+                isCalculating={isCalculating}
+                calculationInput={calculationInput}
+                profitInput={profitInput}
+              />
             </div>
           </section>
         )}

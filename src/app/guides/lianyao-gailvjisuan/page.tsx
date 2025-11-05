@@ -246,8 +246,8 @@ export default function LianYaoGaiLvPage() {
             <h2 className="text-3xl font-bold text-amber-900 mb-6">四、特殊技能概率计算</h2>
 
             <p className="text-amber-800 leading-relaxed mb-4">
-              高级必杀、高级神佑复生等特殊技能的保留机制与普通技能完全相同，都是30%概率。
-              但由于特殊技能价值高，我们通常会单独计算它们的保留概率。
+              所有技能的保留机制完全相同，都是30%概率。
+              如果你想单独追踪某些重要技能，可以在"特殊技能数量"中填写。
             </p>
 
             <p className="text-amber-800 leading-relaxed mb-4">

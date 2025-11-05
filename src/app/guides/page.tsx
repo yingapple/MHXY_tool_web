@@ -155,8 +155,7 @@ export default function GuidesPage() {
             <ul className="list-disc list-inside text-amber-800 space-y-2 mb-4">
               <li>每个技能有30%的概率被保留到下一代</li>
               <li>必带技能100%保留（如龙族的龙之力）</li>
-              <li>特殊技能（高级必杀、高级神佑等）同样遵循30%保留概率</li>
-              <li>野生宠物和特殊宠物（大海龟/泡泡）有固定出现概率</li>
+              <li>野生宠物和大海龟有固定出现概率（约10%）</li>
               <li>主宠和副宠各有40%概率成为结果种类</li>
             </ul>
 
