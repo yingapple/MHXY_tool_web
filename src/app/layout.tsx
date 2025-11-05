@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mhxy-helper.com'), // TODO: 部署后替换为实际域名
+  metadataBase: new URL('https://www.mhxy-helper.com'),
   title: {
     default: '梦幻西游炼妖助手 - 精确概率计算 | 炼妖计算器',
     template: '%s | 梦幻西游炼妖助手'
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'zh_CN',
-    url: 'https://mhxy-helper.com',
+    url: 'https://www.mhxy-helper.com',
     title: '梦幻西游炼妖助手 - 精确概率计算',
     description: '专业的梦幻西游炼妖概率计算器，支持技能继承、必带技能、成本收益分析。',
     siteName: '梦幻西游炼妖助手',

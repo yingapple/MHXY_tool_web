@@ -1383,6 +1383,98 @@ main()
 
 ### 1. SEO优化方案
 
+#### 1.0 域名配置最佳实践 ⭐⭐⭐⭐⭐
+
+**当前域名配置**:
+- 主域名: `www.mhxy-helper.com`
+- 次域名: `mhxy-helper.com` (307 重定向到主域名)
+
+**SEO 最佳实践建议**:
+
+##### 推荐方案：使用 www 作为主域名 ✅
+
+**优势**:
+1. **规范化 (Canonicalization)**:
+   - 避免重复内容问题，搜索引擎明确知道哪个是主域名
+   - 所有外链、引用、收录都集中到 `www.mhxy-helper.com`
+
+2. **Cookie 管理优势**:
+   - `www` 子域名的 Cookie 不会发送到其他子域名（如 `api.mhxy-helper.com`）
+   - 减少不必要的 Cookie 传输，提升性能
+
+3. **CDN 和子域名扩展性**:
+   - 未来如果需要 `api.mhxy-helper.com`, `cdn.mhxy-helper.com` 等子域名更灵活
+   - 不会与主站的 Cookie 冲突
+
+4. **符合传统习惯**:
+   - 用户习惯输入 `www`，看起来更专业
+   - 大型网站如 `www.baidu.com`, `www.taobao.com` 都使用 www
+
+**配置要点**:
+
+1. **301/307 重定向设置** ✅ (当前已配置)
+   ```
+   mhxy-helper.com → 307 重定向 → www.mhxy-helper.com
+   ```
+   - 使用 **301 永久重定向** 更好（告诉搜索引擎永久迁移）
+   - 307 临时重定向也可以，但 SEO 效果略差
+
+2. **Canonical 标签配置** ⭐ (必须配置)
+   ```html
+   <link rel="canonical" href="https://www.mhxy-helper.com/当前页面路径" />
+   ```
+   - 所有页面都应该指向 `www` 版本
+   - 即使用户访问 `mhxy-helper.com`，canonical 也指向 `www` 版本
+
+3. **Sitemap 配置**
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+     <url>
+       <loc>https://www.mhxy-helper.com/</loc>
+       <lastmod>2025-01-05</lastmod>
+       <priority>1.0</priority>
+     </url>
+     <url>
+       <loc>https://www.mhxy-helper.com/calculator</loc>
+       ...
+     </url>
+   </urlset>
+   ```
+   - 所有 URL 都使用 `www` 版本
+
+4. **Google Search Console**
+   - 提交 `https://www.mhxy-helper.com/` 作为主域名
+   - 可以同时添加 `https://mhxy-helper.com/`，但设置 `www` 为首选域名
+
+5. **内部链接统一**
+   - 所有内部链接使用相对路径 `/calculator` 或绝对路径 `https://www.mhxy-helper.com/calculator`
+   - 不要混用 `mhxy-helper.com` 和 `www.mhxy-helper.com`
+
+6. **Open Graph 和 Twitter Card**
+   ```typescript
+   openGraph: {
+     url: 'https://www.mhxy-helper.com/calculator',  // 使用 www
+     // ...
+   }
+   ```
+
+**检查清单**:
+- [x] 设置 307/301 重定向: `mhxy-helper.com` → `www.mhxy-helper.com`
+- [ ] 所有页面添加 canonical 标签指向 `www` 版本
+- [ ] 更新 sitemap.xml 使用 `www` URL
+- [ ] 更新所有 Open Graph 和 meta 标签使用 `www` URL
+- [ ] Google Search Console 提交 `www` 版本
+- [ ] 百度站长平台提交 `www` 版本
+- [ ] 检查内部链接都使用 `www` 或相对路径
+
+**注意事项**:
+- ⚠️ 建议将 307 改为 **301 永久重定向**，这样搜索引擎会更快地识别主域名
+- ⚠️ 一旦选择了 `www` 作为主域名，就不要再改变，保持一致性
+- ⚠️ 所有外部推广、社交媒体分享都使用 `https://www.mhxy-helper.com`
+
+---
+
 #### 1.1 关键词策略
 
 **核心关键词**:
