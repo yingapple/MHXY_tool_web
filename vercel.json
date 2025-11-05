@@ -1,12 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "https://mhxy-helper.com/:path*",
-      "destination": "https://www.mhxy-helper.com/:path*",
-      "permanent": true,
-      "statusCode": 301
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
