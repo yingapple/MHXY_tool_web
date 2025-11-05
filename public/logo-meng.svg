@@ -38,7 +38,7 @@
         fill="#FFA500" opacity="0.2" transform="translate(40, 5)"/>
 
   <!-- "梦"字主体 - 简化艺术化版本 -->
-  <g filter="url(#shadow)" filter="url(#glow)">
+  <g filter="url(#glow)">
     <!-- 草字头 -->
     <path d="M 35 25 Q 40 20, 45 25 L 43 30"
           stroke="url(#goldGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>

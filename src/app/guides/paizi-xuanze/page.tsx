@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function PaiziXuanzePage() {
         <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <img src="/logo-meng.svg" alt="梦" className="w-10 h-10 md:w-12 md:h-12" />
+              <Image src="/logo-small.png" alt="梦" width={48} height={48} className="w-10 h-10 md:w-12 md:h-12" />
               <h1 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-amber-100 to-yellow-200">
                 梦幻西游炼妖助手
               </h1>
@@ -250,7 +251,7 @@ export default function PaiziXuanzePage() {
                   <div className="mt-4 p-4 bg-amber-100 rounded-lg border-2 border-amber-400">
                     <p className="text-sm text-amber-900 font-semibold">
                       🔥 <strong>黄金法则：</strong><span className="text-red-600 font-black">优先成长，其次资质！</span>
-                      1.28成长+1400攻资 > 1.20成长+1600攻资。因为资质可以吃元宵提升，成长改不了！
+                      1.28成长+1400攻资 &gt; 1.20成长+1600攻资。因为资质可以吃元宵提升，成长改不了！
                     </p>
                   </div>
                 </div>
@@ -679,7 +680,7 @@ export default function PaiziXuanzePage() {
 
               <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-lg p-5 border-2 border-orange-400">
                 <p className="text-center text-lg font-black text-orange-900 mb-3">
-                  🏆 记住这句话：成长>资质>技能数！
+                  🏆 记住这句话：成长&gt;资质&gt;技能数！
                 </p>
                 <p className="text-center text-sm text-gray-800">
                   选好胚子后，别忘了使用<Link href="/calculator" className="text-blue-600 underline hover:text-blue-800 font-bold">炼妖计算器</Link>

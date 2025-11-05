@@ -28,6 +28,19 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   openGraph: {
     type: 'website',
     locale: 'zh_CN',
@@ -37,7 +50,7 @@ export const metadata: Metadata = {
     siteName: '梦幻西游炼妖助手',
     images: [
       {
-        url: '/og-image.jpg', // TODO: 需要创建这个图片
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: '梦幻西游炼妖助手',
@@ -48,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '梦幻西游炼妖助手 - 精确概率计算',
     description: '专业的梦幻西游炼妖概率计算器，畅玩服玩家必备工具',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -76,6 +89,9 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#D4AF37" />
+
         {/* 百度统计 - TODO: 部署后添加真实ID */}
         {process.env.NODE_ENV === 'production' && (
           <script

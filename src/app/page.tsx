@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -76,7 +77,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 relative">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/logo-meng.svg" alt="梦" className="w-12 h-12 md:w-14 md:h-14 drop-shadow-2xl" aria-hidden="true" />
+              <Image src="/logo-small.png" alt="梦" width={56} height={56} className="w-12 h-12 md:w-14 md:h-14 drop-shadow-2xl" aria-hidden="true" priority />
               <h1 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-amber-100 to-yellow-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 梦幻西游炼妖助手
               </h1>

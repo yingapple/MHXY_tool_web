@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { calculateBookTyping, BookTypingInput, BookTypingResult } from '@/lib/calculator/book-typing';
 
 export default function BookTypingPage() {
@@ -43,7 +44,7 @@ export default function BookTypingPage() {
         <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 relative">
           <div className="flex items-center justify-between">
             <a href="/" className="flex items-center gap-3 hover:scale-105 transition-transform">
-              <img src="/logo-meng.svg" alt="梦" className="w-10 h-10 md:w-12 md:h-12" />
+              <Image src="/logo-small.png" alt="梦" width={48} height={48} className="w-10 h-10 md:w-12 md:h-12" />
               <h1 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-amber-100 to-yellow-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 梦幻西游炼妖助手
               </h1>

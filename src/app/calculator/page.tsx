@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 // 注意：由于这是 'use client' 组件，metadata需要在上层设置
@@ -63,7 +64,7 @@ export default function CalculatorPage() {
         <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 relative">
           <div className="flex items-center justify-between">
             <a href="/" className="flex items-center gap-3 hover:scale-105 transition-transform" aria-label="返回首页">
-              <img src="/logo-meng.svg" alt="梦" className="w-10 h-10 md:w-12 md:h-12" aria-hidden="true" />
+              <Image src="/logo-small.png" alt="梦" width={48} height={48} className="w-10 h-10 md:w-12 md:h-12" aria-hidden="true" />
               <span className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-amber-100 to-yellow-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 梦幻西游炼妖助手
               </span>
