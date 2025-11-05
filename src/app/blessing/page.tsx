@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import BlessingCalculator from '@/components/calculator/BlessingCalculator';
 
 export const metadata: Metadata = {
@@ -9,8 +10,48 @@ export const metadata: Metadata = {
 
 export default function BlessingPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-red-50 via-amber-50 to-orange-100 relative overflow-hidden">
+      {/* 中国风装饰背景 */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <div className="absolute top-10 right-10 w-40 h-40 bg-gradient-to-br from-red-400 to-orange-400 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
+
+        {/* 祥云 */}
+        <svg className="absolute top-1/4 right-0 w-64 h-64 text-amber-300 opacity-20" viewBox="0 0 200 200">
+          <path d="M100,30 Q70,20 80,10 T120,15 Q140,10 145,30 T125,55 Q135,70 110,70 T80,60 Q65,70 70,55 Z" fill="currentColor"/>
+        </svg>
+      </div>
+
+      {/* Header - 中国风 */}
+      <header className="border-b-4 border-red-700 bg-gradient-to-r from-red-800 via-amber-700 to-red-800 shadow-2xl sticky top-0 z-10 relative" role="banner">
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_48%,rgba(251,191,36,0.1)_49%,rgba(251,191,36,0.1)_51%,transparent_52%)] bg-[length:20px_20px]" aria-hidden="true"></div>
+        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 relative">
+          <div className="flex items-center justify-between">
+            <a href="/" className="flex items-center gap-3 hover:scale-105 transition-transform" aria-label="返回首页">
+              <Image src="/logo-small.png" alt="梦" width={48} height={48} className="w-10 h-10 md:w-12 md:h-12" aria-hidden="true" />
+              <span className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-amber-100 to-yellow-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                梦幻西游炼妖助手
+              </span>
+            </a>
+            <nav className="flex gap-2 md:gap-3" role="navigation" aria-label="主导航">
+              <a href="/calculator" className="px-3 md:px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-yellow-300 text-sm md:text-base">
+                炼妖计算器
+              </a>
+              <a href="/blessing" className="px-3 md:px-4 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-lg border-2 border-blue-300 text-sm md:text-base">
+                赐福计算器
+              </a>
+              <a href="/book-typing" className="px-3 md:px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-purple-300 text-sm md:text-base">
+                打书计算器
+              </a>
+              <a href="/guides" className="px-3 md:px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-red-400 text-sm md:text-base">
+                攻略库
+              </a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main className="container mx-auto px-4 py-8">
         {/* 页面标题 */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-amber-900 mb-2">
@@ -85,7 +126,7 @@ export default function BlessingPage() {
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }

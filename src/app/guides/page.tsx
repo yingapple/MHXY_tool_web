@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -48,19 +49,35 @@ const guides = [
 
 export default function GuidesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50">
-      {/* Header */}
-      <header className="border-b border-amber-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-red-50 via-amber-50 to-orange-100 relative overflow-hidden">
+      {/* 中国风装饰背景 */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <div className="absolute top-10 right-10 w-40 h-40 bg-gradient-to-br from-red-400 to-orange-400 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
+      </div>
+
+      {/* Header - 中国风 */}
+      <header className="border-b-4 border-red-700 bg-gradient-to-r from-red-800 via-amber-700 to-red-800 shadow-2xl sticky top-0 z-10 relative" role="banner">
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_48%,rgba(251,191,36,0.1)_49%,rgba(251,191,36,0.1)_51%,transparent_52%)] bg-[length:20px_20px]" aria-hidden="true"></div>
+        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 relative">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-amber-900">
-              <Link href="/">梦幻西游炼妖助手</Link>
-            </h1>
-            <nav className="flex gap-6">
-              <Link href="/calculator" className="text-amber-700 hover:text-amber-900">
+            <Link href="/" className="flex items-center gap-3 hover:scale-105 transition-transform" aria-label="返回首页">
+              <Image src="/logo-small.png" alt="梦" width={48} height={48} className="w-10 h-10 md:w-12 md:h-12" aria-hidden="true" />
+              <span className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-amber-100 to-yellow-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                梦幻西游炼妖助手
+              </span>
+            </Link>
+            <nav className="flex gap-2 md:gap-3" role="navigation" aria-label="主导航">
+              <Link href="/calculator" className="px-3 md:px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-yellow-300 text-sm md:text-base">
                 炼妖计算器
               </Link>
-              <Link href="/guides" className="text-amber-900 font-semibold border-b-2 border-amber-600">
+              <Link href="/blessing" className="px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-blue-300 text-sm md:text-base">
+                赐福计算器
+              </Link>
+              <Link href="/book-typing" className="px-3 md:px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-purple-300 text-sm md:text-base">
+                打书计算器
+              </Link>
+              <Link href="/guides" className="px-3 md:px-4 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg border-2 border-red-400 text-sm md:text-base">
                 攻略库
               </Link>
             </nav>
