@@ -93,6 +93,26 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#D4AF37" />
 
+        {/* Google Analytics */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-9YLBV67HCN"
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-9YLBV67HCN');
+                `
+              }}
+            />
+          </>
+        )}
+
         {/* 百度统计 - TODO: 部署后添加真实ID */}
         {process.env.NODE_ENV === 'production' && (
           <script
