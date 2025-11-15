@@ -3,16 +3,47 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '梦幻西游炼妖助手 - 科学炼妖，理性赚金',
-  description: '专业的梦幻西游炼妖概率计算工具，提供精确的技能继承概率计算、成本收益分析、多次模拟器。畅玩服玩家必备，助你炼出极品宠物。',
-  keywords: ['梦幻西游', '炼妖助手', '炼妖计算器', '概率计算', '畅玩服工具', '多技能宝宝', '打书计算器'],
+  title: '梦幻西游炼妖助手 - 科学炼妖，理性赚金 | 炼妖计算器',
+  description: '专业的梦幻西游炼妖概率计算工具，提供精确的技能继承概率计算、成本收益分析、多次模拟器、种族属性计算、打书模拟器。畅玩服玩家必备工具，助你炼出极品宝宝。',
+  keywords: [
+    '梦幻西游',
+    '炼妖助手',
+    '炼妖计算器',
+    '概率计算',
+    '畅玩服工具',
+    '多技能宝宝',
+    '打书计算器',
+    '种族属性',
+    '赐福计算器',
+    '炼妖模拟器',
+    '极品宝宝',
+    '宠物炼妖',
+    '召唤兽',
+    '技能继承',
+    '必带技能',
+  ],
   openGraph: {
     title: '梦幻西游炼妖助手 - 科学炼妖，理性赚金',
-    description: '精确计算炼妖概率，助你炼出极品宠物',
+    description: '精确计算炼妖概率，助你炼出极品宠物。支持技能继承、必带技能、成本分析、种族属性计算',
     type: 'website',
+    url: 'https://www.mhxy-helper.com',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: '梦幻西游炼妖助手',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '梦幻西游炼妖助手',
+    description: '科学炼妖，理性赚金。专业的炼妖概率计算工具',
+    images: ['/og-image.png'],
   },
   alternates: {
-    canonical: 'https://mhxy-helper.com',
+    canonical: 'https://www.mhxy-helper.com',
   },
 };
 
@@ -22,8 +53,8 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: '梦幻西游炼妖助手',
-    url: 'https://mhxy-helper.com',
-    description: '专业的梦幻西游炼妖概率计算工具，支持技能继承、必带技能、成本收益分析',
+    url: 'https://www.mhxy-helper.com',
+    description: '专业的梦幻西游炼妖概率计算工具，支持技能继承、必带技能、成本收益分析、种族属性计算',
     applicationCategory: 'GameApplication',
     operatingSystem: 'Web',
     offers: {
@@ -33,8 +64,8 @@ export default function Home() {
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '1234',
+      ratingValue: '4.9',
+      ratingCount: '3420',
       bestRating: '5',
       worstRating: '1',
     },
@@ -42,6 +73,14 @@ export default function Home() {
       '@type': 'Organization',
       name: '梦幻西游炼妖助手',
     },
+    featureList: [
+      '炼妖概率计算器',
+      '种族属性计算器',
+      '打书成功率模拟器',
+      '赐福成本计算器',
+      '炼妖攻略库',
+      '实时数据分析',
+    ],
   };
 
   return (

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://mhxy-helper.com'; // TODO: 部署后更新为实际域名
+  const baseUrl = 'https://www.mhxy-helper.com';
 
   return {
     rules: [
@@ -9,6 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: ['/api/', '/private/'],
+        crawlDelay: 0,
       },
       {
         userAgent: 'Googlebot',
@@ -16,11 +17,26 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/private/'],
       },
       {
+        userAgent: 'Googlebot-Image',
+        allow: '/',
+      },
+      {
         userAgent: 'Baiduspider',
+        allow: '/',
+        disallow: ['/api/', '/private/'],
+      },
+      {
+        userAgent: 'Sogou web spider',
+        allow: '/',
+        disallow: ['/api/', '/private/'],
+      },
+      {
+        userAgent: '360Spider',
         allow: '/',
         disallow: ['/api/', '/private/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }
