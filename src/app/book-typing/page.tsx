@@ -50,16 +50,19 @@ export default function BookTypingPage() {
               </h1>
             </a>
             <nav className="flex gap-2 md:gap-3">
-              <a href="/calculator" className="px-3 md:px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-yellow-300 text-sm md:text-base">
+              <a href="/calculator" className="px-2 md:px-3 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-yellow-300 text-xs md:text-sm">
                 炼妖计算器
               </a>
-              <a href="/blessing" className="px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-blue-300 text-sm md:text-base">
+              <a href="/blessing" className="px-2 md:px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-blue-300 text-xs md:text-sm">
                 赐福计算器
               </a>
-              <a href="/book-typing" className="px-3 md:px-4 py-2 bg-purple-600 text-white font-bold rounded-lg shadow-lg border-2 border-purple-300 text-sm md:text-base">
+              <a href="/book-typing" className="px-2 md:px-3 py-2 bg-purple-600 text-white font-bold rounded-lg shadow-lg border-2 border-purple-300 text-xs md:text-sm">
                 打书计算器
               </a>
-              <a href="/guides" className="px-3 md:px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-red-400 text-sm md:text-base">
+              <a href="/race-attributes" className="px-2 md:px-3 py-2 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-green-300 text-xs md:text-sm">
+                种族属性
+              </a>
+              <a href="/guides" className="px-2 md:px-3 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-red-400 text-xs md:text-sm">
                 攻略库
               </a>
             </nav>

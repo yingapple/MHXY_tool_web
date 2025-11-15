@@ -21,6 +21,9 @@ export default function LianYaoGaiLvPage() {
               <Link href="/calculator" className="text-amber-700 hover:text-amber-900">
                 炼妖计算器
               </Link>
+              <Link href="/race-attributes" className="text-amber-700 hover:text-amber-900">
+                种族属性
+              </Link>
               <Link href="/guides" className="text-amber-700 hover:text-amber-900">
                 攻略库
               </Link>

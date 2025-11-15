@@ -28,7 +28,7 @@ export default function PetSelector({ label, value, onChange }: PetSelectorProps
             type="number"
             min="0"
             max="20"
-            value={value.totalSkillCount === 0 ? '' : value.totalSkillCount}
+            value={value.totalSkillCount}
             onChange={(e) => {
               const val = e.target.value === '' ? 0 : parseInt(e.target.value);
               if (!isNaN(val)) {
@@ -36,10 +36,10 @@ export default function PetSelector({ label, value, onChange }: PetSelectorProps
               }
             }}
             className="w-full rounded-lg border-2 border-amber-300 px-5 py-3 text-lg font-semibold text-amber-900 bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-500 shadow-sm hover:border-amber-400 transition-all"
-            placeholder="输入非必带技能数"
+            placeholder="输入非必带技能数（可填0）"
           />
           <p className="text-xs text-amber-700 mt-2 bg-amber-100 px-3 py-1 rounded">
-            💡 例如：5技能宝宝有1个必带技能，这里填4（非必带技能数）。
+            💡 例如：5技能宝宝有1个必带技能，这里填4（非必带技能数）。可以填0表示没有非必带技能。
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export default function PetSelector({ label, value, onChange }: PetSelectorProps
             type="number"
             min="0"
             max={value.totalSkillCount}
-            value={value.mustHaveSkillCount === 0 ? '' : value.mustHaveSkillCount}
+            value={value.mustHaveSkillCount}
             onChange={(e) => {
               const val = e.target.value === '' ? 0 : parseInt(e.target.value);
               if (!isNaN(val)) {
@@ -61,22 +61,22 @@ export default function PetSelector({ label, value, onChange }: PetSelectorProps
               }
             }}
             className="w-full rounded-lg border-2 border-amber-300 px-5 py-3 text-lg font-semibold text-amber-900 bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-500 shadow-sm hover:border-amber-400 transition-all"
-            placeholder="输入必带技能数"
+            placeholder="输入必带技能数（可填0）"
           />
-          <p className="text-xs text-amber-700 mt-2 bg-amber-100 px-3 py-1 rounded">💡 必带技能100%保留，不参与30%概率计算</p>
+          <p className="text-xs text-amber-700 mt-2 bg-amber-100 px-3 py-1 rounded">💡 必带技能100%保留，不参与30%概率计算。填0表示没有必带技能。</p>
         </div>
 
         <div className="group">
           <label className="block text-base font-bold text-amber-900 mb-3 flex items-center gap-2">
             <span>✨</span>
             特殊技能数量
-            <span className="text-amber-600 text-xs font-normal ml-2">(一般为0，可不填)</span>
+            <span className="text-amber-600 text-xs font-normal ml-2">(一般为0)</span>
           </label>
           <input
             type="number"
             min="0"
             max={value.totalSkillCount}
-            value={value.specialSkillCount === 0 ? '' : value.specialSkillCount}
+            value={value.specialSkillCount}
             onChange={(e) => {
               const val = e.target.value === '' ? 0 : parseInt(e.target.value);
               if (!isNaN(val)) {
@@ -84,9 +84,9 @@ export default function PetSelector({ label, value, onChange }: PetSelectorProps
               }
             }}
             className="w-full rounded-lg border-2 border-purple-300 px-5 py-3 text-lg font-semibold text-purple-900 bg-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 shadow-sm hover:border-purple-400 transition-all"
-            placeholder="默认为0"
+            placeholder="默认为0（可填0）"
           />
-          <p className="text-xs text-purple-700 mt-2 bg-purple-100 px-3 py-1 rounded">💡 如果需要单独追踪某些技能，可以填写数量</p>
+          <p className="text-xs text-purple-700 mt-2 bg-purple-100 px-3 py-1 rounded">💡 如果需要单独追踪某些技能，可以填写数量。可以填0表示没有特殊技能。</p>
         </div>
       </div>
 

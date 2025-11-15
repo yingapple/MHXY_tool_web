@@ -79,16 +79,19 @@ export default function CalculatorPage() {
               </span>
             </a>
             <nav className="flex gap-2 md:gap-3" role="navigation" aria-label="主导航">
-              <a href="/calculator" className="px-3 md:px-4 py-2 bg-amber-500 text-white font-bold rounded-lg shadow-lg border-2 border-yellow-300 text-sm md:text-base">
+              <a href="/calculator" className="px-2 md:px-3 py-2 bg-amber-500 text-white font-bold rounded-lg shadow-lg border-2 border-yellow-300 text-xs md:text-sm">
                 炼妖计算器
               </a>
-              <a href="/blessing" className="px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-blue-300 text-sm md:text-base">
+              <a href="/blessing" className="px-2 md:px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-blue-300 text-xs md:text-sm">
                 赐福计算器
               </a>
-              <a href="/book-typing" className="px-3 md:px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-purple-300 text-sm md:text-base">
+              <a href="/book-typing" className="px-2 md:px-3 py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-purple-300 text-xs md:text-sm">
                 打书计算器
               </a>
-              <a href="/guides" className="px-3 md:px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-red-400 text-sm md:text-base">
+              <a href="/race-attributes" className="px-2 md:px-3 py-2 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-green-300 text-xs md:text-sm">
+                种族属性
+              </a>
+              <a href="/guides" className="px-2 md:px-3 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-lg transition-all hover:scale-105 border-2 border-red-400 text-xs md:text-sm">
                 攻略库
               </a>
             </nav>
@@ -179,7 +182,7 @@ export default function CalculatorPage() {
                 type="number"
                 min="0"
                 max={Math.min(calculationInput.petA.totalSkillCount, calculationInput.petB.totalSkillCount)}
-                value={calculationInput.duplicateSkillCount === 0 ? '' : calculationInput.duplicateSkillCount}
+                value={calculationInput.duplicateSkillCount}
                 onChange={(e) =>
                   setCalculationInput({
                     ...calculationInput,
@@ -187,9 +190,9 @@ export default function CalculatorPage() {
                   })
                 }
                 className="w-full rounded-lg border-2 border-purple-300 px-5 py-3 text-xl font-bold text-purple-900 bg-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 shadow-sm hover:border-purple-400 transition-all"
-                placeholder="输入重复技能数"
+                placeholder="输入重复技能数（可填0）"
               />
-              <p className="text-xs text-purple-700 mt-3 bg-purple-200 px-3 py-2 rounded">💡 两只宠物有几个相同的技能</p>
+              <p className="text-xs text-purple-700 mt-3 bg-purple-200 px-3 py-2 rounded">💡 两只宠物有几个相同的技能。可以填0表示没有重复技能。</p>
             </div>
 
             {/* 野生概率 */}
@@ -314,9 +317,10 @@ export default function CalculatorPage() {
                 type="number"
                 min="0"
                 step="10"
-                value={profitInput.petACost === 0 ? '' : profitInput.petACost}
+                value={profitInput.petACost}
                 onChange={(e) => setProfitInput({ ...profitInput, petACost: parseNumberInput(e.target.value, 0) })}
                 className="w-full rounded-lg border-2 border-green-300 px-5 py-3 text-xl font-bold text-green-900 bg-white focus:border-green-500 focus:ring-2 focus:ring-green-500 shadow-sm"
+                placeholder="可填0"
               />
             </div>
 
@@ -330,9 +334,10 @@ export default function CalculatorPage() {
                 type="number"
                 min="0"
                 step="10"
-                value={profitInput.petBCost === 0 ? '' : profitInput.petBCost}
+                value={profitInput.petBCost}
                 onChange={(e) => setProfitInput({ ...profitInput, petBCost: parseNumberInput(e.target.value, 0) })}
                 className="w-full rounded-lg border-2 border-green-300 px-5 py-3 text-xl font-bold text-green-900 bg-white focus:border-green-500 focus:ring-2 focus:ring-green-500 shadow-sm"
+                placeholder="可填0"
               />
             </div>
 
@@ -363,9 +368,10 @@ export default function CalculatorPage() {
                 type="number"
                 min="0"
                 step="50"
-                value={profitInput.targetMarketPrice === 0 ? '' : profitInput.targetMarketPrice}
+                value={profitInput.targetMarketPrice}
                 onChange={(e) => setProfitInput({ ...profitInput, targetMarketPrice: parseNumberInput(e.target.value, 0) })}
                 className="w-full rounded-lg border-2 border-yellow-400 px-5 py-3 text-2xl font-black text-amber-900 bg-white focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 shadow-sm"
+                placeholder="可填0"
               />
               <p className="text-sm text-amber-800 mt-2 font-bold">⭐ 炼出目标宝宝后能卖多少钱？</p>
             </div>

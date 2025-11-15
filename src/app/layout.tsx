@@ -93,6 +93,13 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#D4AF37" />
 
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8506247527193323"
+          crossOrigin="anonymous"
+        />
+
         {/* Google Analytics */}
         {process.env.NODE_ENV === 'production' && (
           <>

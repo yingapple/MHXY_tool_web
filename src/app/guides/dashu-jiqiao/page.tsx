@@ -22,10 +22,13 @@ export default function DashuJiqiaoPage() {
               </h1>
             </Link>
             <nav className="flex gap-2 md:gap-3">
-              <Link href="/calculator" className="px-3 md:px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg shadow-lg transition-all text-sm md:text-base">
+              <Link href="/calculator" className="px-2 md:px-3 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-lg shadow-lg transition-all text-xs md:text-sm">
                 炼妖计算器
               </Link>
-              <Link href="/guides" className="px-3 md:px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-lg transition-all text-sm md:text-base">
+              <Link href="/race-attributes" className="px-2 md:px-3 py-2 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg shadow-lg transition-all text-xs md:text-sm">
+                种族属性
+              </Link>
+              <Link href="/guides" className="px-2 md:px-3 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-lg transition-all text-xs md:text-sm">
                 攻略库
               </Link>
             </nav>
